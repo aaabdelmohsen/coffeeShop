@@ -16,7 +16,7 @@ public class PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
-	public Person savePerson(Person person) {
+	public Person savePerson(Person person){
 		return personRepository.save(person);
 	}
 
@@ -28,8 +28,13 @@ public class PersonService {
 		return personRepository.findOne(id);
 	}
 
-	public void removePerson(Person person) {
+	public void removePerson(Person person) throws Exception {
 		personRepository.delete(person);
 	}
+
+	public List<Person> getAllPerson(){
+		return personRepository.findAll();
+	}
+
 
 }

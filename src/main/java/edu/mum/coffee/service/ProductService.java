@@ -2,6 +2,7 @@ package edu.mum.coffee.service;
 
 import java.util.List;
 
+import edu.mum.coffee.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,11 +18,11 @@ public class ProductService   {
 	@Autowired
 	private ProductRepository productRepository;
 		
-	public Product save(Product product) {
+	public Product save(Product product){
 		return productRepository.save(product);
 	}
 
-	public void delete(Product product) {
+	public void delete(Product product) throws Exception {
 		productRepository.delete(product);
 	}
 
@@ -46,6 +47,10 @@ public class ProductService   {
 	
 	public List<Product> findByProductType(ProductType productType) {
 		 return productRepository.findByProductType(productType);
+	}
+
+	public Product findById(int id) {
+		return productRepository.findOne(id);
 	}
 	
 }
